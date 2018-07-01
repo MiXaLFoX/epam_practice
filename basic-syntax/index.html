@@ -7,27 +7,29 @@
 <body>
   <script>
     function rectSides () {
+      var args = [];
       for (var i =  0; i < arguments.length; i++) {
-        if (arguments[i] === 1) {
-          console.log("false");
-          break;
-        } else {
-          console.log("true");
-        }
+        args[i] = arguments[i];
+      }
+
+      if (args.indexOf(1) !== -1) {
+        console.log("false");
+      } else {
+        console.log("true");
       }
     }
 
-   // rectSides(10, 15, 20);
+    rectSides(10, 15, 20);
     rectSides(10, 15, 1);
 
     const reverse = (num) => {
-      const numStr = num.toString();
+      let numStr = num.toString();
       const arr = [];
       for (let i = numStr.length - 1; i >= 0; i--) {
         arr.push(numStr[i]);
       }
-      const reversedNum = arr.join('');
-      console.log(parseInt(reversedNum));
+      numStr = arr.join('');
+      console.log(parseInt(numStr));
     };
     reverse(123456789);
 
@@ -50,9 +52,9 @@
     const sumValues = (arr1, arr2) => {
       const arr3 = [];
       for (let i = 0; i < arr1.length; i++) {
-        for (let j = 0; j < arr2.length;  j++) {
+        for (let j = 0; j < arr2.length; j++) {
           if(i === j) {
-            arr3.push(arr1[i] + arr2[j]);
+            arr3[i] = (arr1[i] + arr2[j]);
           }
         }
       }
