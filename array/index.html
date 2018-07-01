@@ -15,7 +15,43 @@
     isThereNum([1, 2, 3], 1);
     isThereNum([1, 2, 3], 10);
 
+    const mapArr = arr => {
+      const mapped = arr.map((elm, index) => elm + (index + 1));
+      console.log(mapped);
+    };
+    mapArr(['apple', 'banana', 'orange']);
+
+    const isFalsy = (arr) => {
+      const notFalsy = arr.filter(elms => !!elms !== false);
+      console.log(notFalsy);
+    };
+    isFalsy([false, 1, 0, true, 'test', '', undefined]);
+
+    const numOfFalsies = arr => {
+      const falsyNum = arr.filter(elms => !!elms === false);
+      console.log(falsyNum.length);
+    };
+    numOfFalsies([false, 1, 0, true, 'test', '', undefined, null]);
+
+    const sumArrNums = arr => {
+      const sum = arr.reduce((acc, cur) => {
+        return acc + cur;
+      }, 0);
+      console.log(sum);
+    };
+    sumArrNums([1, 2, 3, 4, 5]);
+
+    const spliceArr = (arr, item) => {
+      arr.splice(item);
+      console.log(arr);
+    };
+    spliceArr([1, 2, 3, 4, 5], 3);
     
+    const addToArr = (arr, item) => {
+      arr.push(item);
+      console.log(arr);
+    };
+    addToArr(['item1', 'item2', 'item3'], 'item4');
   </script>
 </body>
 </html>
