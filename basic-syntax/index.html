@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>basic syntax</title>
+</head>
+<body>
+  <script>
+    function rectSides () {
+      for (var i =  0; i < arguments.length; i++) {
+        if (arguments[i] === 1) {
+          console.log("false");
+          break;
+        } else {
+          console.log("true");
+        }
+      }
+    }
+
+   // rectSides(10, 15, 20);
+    rectSides(10, 15, 1);
+
+    const reverse = (num) => {
+      const numStr = num.toString();
+      const arr = [];
+      for (let i = numStr.length - 1; i >= 0; i--) {
+        arr.push(numStr[i]);
+      }
+      const reversedNum = arr.join('');
+      console.log(parseInt(reversedNum));
+    };
+    reverse(123456789);
+
+    const strLength = (str, num) => {
+      if (str.length === num) {
+        console.log("true");
+      } else {
+        console.log("false");
+      }
+    };
+    strLength("test", 4);
+    strLength("anotherTest", 4);
+
+    const isNumOrString = (x) => {
+      typeof(x) === "string" ? console.log("true") : console.log("false");
+    };
+    isNumOrString("123");
+    isNumOrString(123);
+
+    const sumValues = (arr1, arr2) => {
+      const arr3 = [];
+      for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length;  j++) {
+          if(i === j) {
+            arr3.push(arr1[i] + arr2[j]);
+          }
+        }
+      }
+      console.log(arr3);
+    };
+    sumValues([1, 1, 1], [2, 2, 2]);
+    sumValues([1, 2, 3], [4, 5, 6]);
+  </script>
+</body>
+</html>
