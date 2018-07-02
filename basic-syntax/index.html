@@ -37,11 +37,9 @@
     strLength("test", 4);
     strLength("anotherTest", 4);
 
-    const isNumOrString = (x) => {
-      typeof(x) === "string" ? console.log("true") : console.log("false");
-    };
-    isNumOrString("123");
-    isNumOrString(123);
+    const isString = x => typeof(x) === "string";
+    isString("123");
+    isString(123);
 
     const sumValues = (arr1, arr2) => {
       const arr3 = [];
