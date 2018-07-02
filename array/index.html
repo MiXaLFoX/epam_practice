@@ -21,11 +21,11 @@
     };
     addIndexToArrayString(['apple', 'banana', 'orange']);
 
-    const isFalsy = (arr) => {
-      const notFalsy = arr.filter(elms => !!elms !== false);
-      console.log(notFalsy);
+    const showTruthyItems = arr => {
+      const notFalsy = arr.filter(item => !!item);
+      return notFalsy;
     };
-    isFalsy([false, 1, 0, true, 'test', '', undefined]);
+    showTruthyItems([false, 1, 0, true, 'test', '', undefined]);
 
     const numOfFalsies = arr => {
       const falsyNum = arr.filter(elms => !!elms === false);
