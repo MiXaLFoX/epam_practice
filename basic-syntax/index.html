@@ -22,16 +22,16 @@
     isTriangleValid(10, 15, 20);
     isTriangleValid(10, 15, 1);
 
-    const reverse = (num) => {
+    const reverseNumber = (num) => {
       let numStr = num.toString();
       const arr = [];
       for (let i = numStr.length - 1; i >= 0; i--) {
         arr.push(numStr[i]);
       }
       numStr = arr.join('');
-      console.log(parseInt(numStr));
+      return parseInt(numStr);
     };
-    reverse(123456789);
+    reverseNumber(123456789);
 
     const strLength = (str, num) => {
       if (str.length === num) {
