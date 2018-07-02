@@ -6,19 +6,9 @@
 </head>
 <body>
   <script>
-    function isTriangleValid () {
-      var args = [];
-      for (var i =  0; i < arguments.length; i++) {
-        args[i] = arguments[i];
-      }
-
-      if (args.indexOf(1) !== -1) {
-        return false;
-      } else {
-        return true;
-      }
+    function isTriangleValid (a, b, c) {
+      return a < b + c && b < a + c && c < a + b
     }
-
     isTriangleValid(10, 15, 20);
     isTriangleValid(10, 15, 1);
 
