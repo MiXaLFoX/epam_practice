@@ -19,6 +19,15 @@
     const makeArrFromStrs = str => str.split(", ");
     makeArrFromStrs('string1, string2, string3');
 
+    const setProperCase = str => {
+      let newStr = str.toLowerCase();
+      newStr = newStr[0].toUpperCase() + newStr.substr(1);
+      return newStr;
+    };
+    setProperCase("tEst");
+
+    
+
   </script>
 </body>
 </html>
