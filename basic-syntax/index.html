@@ -6,21 +6,21 @@
 </head>
 <body>
   <script>
-    function rectSides () {
+    function isTriangleValid () {
       var args = [];
       for (var i =  0; i < arguments.length; i++) {
         args[i] = arguments[i];
       }
 
       if (args.indexOf(1) !== -1) {
-        console.log("false");
+        return false;
       } else {
-        console.log("true");
+        return true;
       }
     }
 
-    rectSides(10, 15, 20);
-    rectSides(10, 15, 1);
+    isTriangleValid(10, 15, 20);
+    isTriangleValid(10, 15, 1);
 
     const reverse = (num) => {
       let numStr = num.toString();
