@@ -27,11 +27,11 @@
     };
     showTruthyItems([false, 1, 0, true, 'test', '', undefined]);
 
-    const numOfFalsies = arr => {
-      const falsyNum = arr.filter(elms => !!elms === false);
-      console.log(falsyNum.length);
+    const numOfFalsyItems = arr => {
+      const falsyNum = arr.filter(items => !items);
+      return falsyNum.length;
     };
-    numOfFalsies([false, 1, 0, true, 'test', '', undefined, null]);
+    numOfFalsyItems([false, 1, 0, true, 'test', '', undefined, null]);
 
     const sumArrNums = arr => {
       const sum = arr.reduce((acc, cur) => {
