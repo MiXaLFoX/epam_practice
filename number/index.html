@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number</title>
+</head>
+<body>
+  <script>
+    'use strict';
+
+    const showLastDigit = num => {
+      let lastNum = num.toString();
+      lastNum = lastNum.substr(lastNum.length - 1, 1);
+      return parseInt(lastNum);
+    };
+    showLastDigit(159);
+
+
+  </script>
+</body>
+</html>
