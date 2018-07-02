@@ -11,15 +11,15 @@
     };
     fromArrToStr(["string1", "string2", "string3"], ", ");
 
-    const isThereNum = (arr, num) => console.log(arr.includes(num));
+    const isThereNum = (arr, num) => arr.includes(num);
     isThereNum([1, 2, 3], 1);
     isThereNum([1, 2, 3], 10);
 
-    const mapArr = arr => {
+    const addIndexToArrayString = arr => {
       const mapped = arr.map((elm, index) => elm + (index + 1));
-      console.log(mapped);
+      return mapped;
     };
-    mapArr(['apple', 'banana', 'orange']);
+    addIndexToArrayString(['apple', 'banana', 'orange']);
 
     const isFalsy = (arr) => {
       const notFalsy = arr.filter(elms => !!elms !== false);
