@@ -6,7 +6,28 @@
 </head>
 <body>
   <script>
-    
+    const addPropToObject = (obj, key, value) => {
+      obj[key] = value;
+      return obj;
+    };
+    addPropToObject({width: 100, height: 100}, 'weight', 50);
+
+    const deleteObjProp = (obj, prop) => {
+      delete obj[prop];
+      return obj;
+    };
+    deleteObjProp({width: 100, height: 100, weight: 50}, "weight");
+
+    const objPropsToArrs = (obj) => {
+      return Object.entries(obj);
+    };
+    objPropsToArrs({width: 100, height: 100, weight: 50});
+
+    const cloneObject = (obj) => {
+      const objCopy = Object.assign({}, obj);
+      return objCopy;
+    };
+    cloneObject({width: 100, height: 100, weight: 50});
   </script>
 </body>
 </html>
