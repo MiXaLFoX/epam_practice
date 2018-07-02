@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Math</title>
+</head>
+<body>
+  <script>
+    'use strict';
+
+    const randomIntegerNum = (minNum, maxNum) => {
+      let randNum = minNum + Math.random() * (maxNum + 1 - minNum);
+      return Math.floor(randNum);
+    };
+    randomIntegerNum(2, 10);
+  </script>
+</body>
+</html>
