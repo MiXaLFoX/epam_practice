@@ -7,7 +7,7 @@
 <body>
   <script>
     const fromArrToStr = (array, separator) => {
-      console.log(array.join(separator));
+      return array.join(separator);
     };
     fromArrToStr(["string1", "string2", "string3"], ", ");
 
@@ -37,21 +37,21 @@
       const sum = arr.reduce((acc, cur) => {
         return acc + cur;
       }, 0);
-      console.log(sum);
+      return sum;
     };
     sumArrNums([1, 2, 3, 4, 5]);
 
     const spliceArr = (arr, item) => {
       arr.splice(item);
-      console.log(arr);
+      return arr;
     };
     spliceArr([1, 2, 3, 4, 5], 3);
 
-    const addToArr = (arr, item) => {
+    const addItemToArr = (arr, item) => {
       arr.push(item);
-      console.log(arr);
+      return arr;
     };
-    addToArr(['item1', 'item2', 'item3'], 'item4');
+    addItemToArr(['item1', 'item2', 'item3'], 'item4');
   </script>
 </body>
 </html>
