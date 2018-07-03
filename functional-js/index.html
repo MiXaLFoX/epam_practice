@@ -10,12 +10,19 @@
 
     const greet = (greeting) => (name) => `${greeting}, ${name}`;
     greet('Hello')('Natallia');
-    
+
     const isNumEven = num => num % 2 === 0;
 
-    const complement = func => (val) => !func(val);
+    const complement = func => val => !func(val);
     complement(isNumEven)(2);
 
+    const double = x => x * 2;
+    const addOne = x => x + 1;
+    const square = x => x * x;
+    //const divide = x => x / 2;
+
+    const pipe = (...fns) => fns.reduce((acc, cur) => x => cur(acc(x)));
+    pipe(double, addOne, square)(2);
   </script>
 </body>
 </html>
