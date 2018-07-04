@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Asynchronous JS</title>
+</head>
+<body>
+  <script>
+
+    const alertOnTimeOut = () => {
+      let idleTime = 0;
+      const tick = () => {
+        idleTime +=1;
+
+        if (idleTime > 10) {
+          alert('Hey, wake up!!!');
+          reset();
+        }
+
+        setTimeout(tick, 1000);
+      };
+
+      setTimeout(tick, 1000);
+
+      const reset = () => idleTime = 0;
+      document.addEventListener('mousemove', reset);
+    };
+    alertOnTimeOut();
+
+
+  </script>
+</body>
+</html>
