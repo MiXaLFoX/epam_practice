@@ -8,21 +8,13 @@
   <script>
 
     const alertOnTimeOut = () => {
-      let idleTime = 0;
-      const tick = () => {
-        idleTime +=1;
-
-        if (idleTime > 10) {
+      let idleTime;
+      const reset = () => {
+        clearTimeout(idleTime);
+        idleTime = setTimeout(() => {
           alert('Hey, wake up!!!');
-          reset();
-        }
-
-        setTimeout(tick, 1000);
+        }, 10000);
       };
-
-      setTimeout(tick, 1000);
-
-      const reset = () => idleTime = 0;
       document.addEventListener('mousemove', reset);
     };
     alertOnTimeOut();
