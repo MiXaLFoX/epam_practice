@@ -22,14 +22,12 @@
     const getBool = () => !!(Math.round(Math.random()));
     const mockGetRequest = (data, error) => {
       return new Promise((resolve, reject) => {
-        if (getBool()) {
-          resolve(console.log(data));
-        } else {
-          setTimeout(reject(error), 10000);
-        }
+        return setTimeout(() => {getBool() ? resolve(data) : reject(error)}, 3000);
       });
     };
-    mockGetRequest({data: [1, 2, 3]}, 'Http error!');
+    mockGetRequest({data: [1, 20, 3, 45]}, 'Http error!')
+      .then((data) => console.log(data.data.filter((item) => item > 10)))
+      .catch((error) => console.log(`Error: ${error}`));
   </script>
 </body>
 </html>
