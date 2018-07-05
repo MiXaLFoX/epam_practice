@@ -17,9 +17,19 @@
       };
       document.addEventListener('mousemove', reset);
     };
-    alertOnTimeOut();
+    //alertOnTimeOut();
 
-
+    const getBool = () => !!(Math.round(Math.random()));
+    const mockGetRequest = (data, error) => {
+      return new Promise((resolve, reject) => {
+        if (getBool()) {
+          resolve(console.log(data));
+        } else {
+          setTimeout(reject(error), 10000);
+        }
+      });
+    };
+    mockGetRequest({data: [1, 2, 3]}, 'Http error!');
   </script>
 </body>
 </html>
