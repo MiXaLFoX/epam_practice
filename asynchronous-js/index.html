@@ -37,6 +37,12 @@
     }, reason => {
       console.log(reason)
     });
+
+    const newPromise = mockGetRequest({data: [1, 2, 3]}, 'Http error!');
+    newPromise
+      .then(() => {console.log('Promise resolved')})
+      .catch(() => {console.log('Promise resolved')})
+
   </script>
 </body>
 </html>
