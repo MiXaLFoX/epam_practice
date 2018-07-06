@@ -40,9 +40,10 @@
 
     const newPromise = mockGetRequest({data: [1, 2, 3]}, 'Http error!');
     newPromise
-      .then()
-      .catch()
+      .then(() => {})
+      .catch(() => {})
       .finally(() => {console.log('Promise resolved')});
+      /**/
 
   </script>
 </body>
