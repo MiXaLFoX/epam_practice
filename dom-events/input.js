@@ -1,20 +1,26 @@
 
 const formFields = [
   {tag: 'input', type: 'text', inner: 'type smth'},
-  {tag: 'button', type: 'submit', inner: 'Submit'}
+  {tag: 'button', type: 'button', inner: 'Submit'}
 ];
 
-const createForm = (formFields) => {
-  const form = document.createElement('form');
-  form.name = 'form';
+const form = document.createElement('form');
+form.name = 'form';
 
-  formFields.forEach(item => {
+const createForm = (formFields) => {
+    formFields.forEach(item => {
     form.appendChild(createElem(item));
   });
-
+  form.appendChild(createErrorElement ('span'));
   document.body.appendChild(form);
 };
 createForm(formFields);
+
+function createErrorElement (tagName) {
+  const errMsg = document.createElement(tagName);
+  errMsg.className = 'error-text';
+  return errMsg;
+}
 
 function createElem (elm) {
   const element = document.createElement(elm.tag);
@@ -23,8 +29,6 @@ function createElem (elm) {
   return element;
 }
 
-const btn = document.querySelector('button');
-
 function getFocus() {
   document.querySelector("input").focus();
 }
@@ -32,16 +36,15 @@ getFocus();
 
 const validate = () => {
   const elem = document.querySelector('input');
-  const errorMsg = document.createElement('span');
+  const errElm = document.querySelector('.error-text');
   if (elem.value.toString().length > 8 || elem.value === '') {
-    form.appendChild(errorMsg);
-    errorMsg.innerHTML = 'Введите не более восьми символов';
-    elem.style.cssText = 'border-color: red';
+    errElm.innerHTML = 'Введите не более восьми символов';
+    elem.classList.add('red');
   } else {
-    errorMsg.innerHTML = '';
-    elem.style.cssText = '';
+    errElm.innerHTML = '';
+    elem.classList.remove('red');
   }
 };
 
-btn.addEventListener('click', validate);
+document.querySelector('button').addEventListener('click', validate);
 
