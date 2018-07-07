@@ -2,11 +2,11 @@
 const createList = (id, items) => {
   const ulElem = document.createElement('ul');
   ulElem.id = id;
-  for (let i = 0; i < items.length; i++) {
+  items.forEach(item => {
     const liElem = document.createElement('li');
-    liElem.innerHTML = items[i];
+    liElem.innerHTML = item;
     ulElem.appendChild(liElem);
-  }
+  });
   return ulElem;
 };
 

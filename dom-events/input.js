@@ -7,20 +7,12 @@ const formFields = [
 const createForm = (formFields) => {
   const form = document.createElement('form');
   form.name = 'form';
+
+  formFields.forEach(item => {
+    form.appendChild(createElem(item));
+  });
+
   document.body.appendChild(form);
-
-  for (let i = 0; i < formFields.length; i++) {
-    const elm = formFields[i];
-
-    switch (elm.tag) {
-      case 'input':
-        form.appendChild(createElem(elm));
-        break;
-      case 'button':
-        form.appendChild(createElem(elm));
-        break;
-    }
-  }
 };
 createForm(formFields);
 
@@ -30,4 +22,26 @@ function createElem (elm) {
   element.innerHTML = elm.inner;
   return element;
 }
+
+const btn = document.querySelector('button');
+
+function getFocus() {
+  document.querySelector("input").focus();
+}
+getFocus();
+
+const validate = () => {
+  const elem = document.querySelector('input');
+  const errorMsg = document.createElement('span');
+  if (elem.value.toString().length > 8 || elem.value === '') {
+    form.appendChild(errorMsg);
+    errorMsg.innerHTML = 'Введите не более восьми символов';
+    elem.style.cssText = 'border-color: red';
+  } else {
+    errorMsg.innerHTML = '';
+    elem.style.cssText = '';
+  }
+};
+
+btn.addEventListener('click', validate);
 
