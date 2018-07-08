@@ -7,9 +7,6 @@
 ul {
   display: inline-block;
 }
-form{
-  display: inline-block;
-}
 .tooltip {
   position: fixed;
   padding: 10px 20px;
@@ -17,6 +14,6 @@ form{
   border-radius: 4px;
   text-align: center;
   color: #333;
-  background: #fff;
+  background: #c2ffbb;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }

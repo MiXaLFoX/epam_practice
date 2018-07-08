@@ -5,6 +5,7 @@ const createList = (id, items) => {
   items.forEach(item => {
     const liElem = document.createElement('li');
     liElem.innerHTML = item;
+    liElem.setAttribute('data-tooltip', `This is a tooltip for ${item} element`);
     ulElem.appendChild(liElem);
   });
   return ulElem;

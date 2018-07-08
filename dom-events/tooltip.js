@@ -1,9 +1,12 @@
 
+let toolTipElem;
+
 const showToolTip = (e) => {
   const target = e.target;
+  const tooltip = target.getAttribute('data-tooltip');
   const container = document.createElement('div');
   container.className = 'tooltip';
-  container.innerHTML = target.innerText;
+  container.innerHTML = tooltip || 'no tooltip for this element';
   document.body.appendChild(container);
 
   const coords = target.getBoundingClientRect();
@@ -18,11 +21,12 @@ const showToolTip = (e) => {
 
   container.style.left = left + 'px';
   container.style.top = top + 'px';
+
+  toolTipElem = container;
 };
 
-const hideToolTip = () => {
-    const container = document.querySelector('.tooltip');
-    document.body.appendChild(container);
+const hideToolTip = (e) => {
+  document.body.removeChild(toolTipElem);
 };
 
 document.addEventListener('mouseover', showToolTip);
