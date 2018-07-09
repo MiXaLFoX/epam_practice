@@ -1,33 +1,38 @@
 
 class Tooltip {
   constructor(element) {
-    this.element = Array.from(element);
+    this.element = element;
     this.toolTipElem = null;
     this.init();
   }
   init () {
-    this.element.forEach(el => {
-      el.addEventListener('mouseenter', (e) => this.showToolTip());
-      el.addEventListener('mouseleave', (e) => this.hideToolTip());
-    })
+    this.element.addEventListener('mouseenter', () => this.showToolTip());
+    this.element.addEventListener('mouseleave', () => this.hideToolTip());
   }
-  showToolTip (e) {
-    e = event || window.event;
-    const target = e.target;
-    const tooltip = target.getAttribute('data-tooltip');
-
-    if (!tooltip) return;
-
+  createToolTipContainer () {
+    const tooltip = this.element.getAttribute('data-tooltip');
     const container = document.createElement('div');
     container.className = 'tooltip';
     container.innerHTML = tooltip;
-    document.body.appendChild(container);
+    return container;
+  }
+  showToolTip () {
+    this.createToolTipContainer ();
+    const tooltip = this.createToolTipContainer();
+    document.body.appendChild(tooltip);
 
+    this.setCoords(container);
+    this.toolTipElem = container;
+  }
+
+  setCoords(tipElem){
+    const container = tipElem;
+    const target = this.element;
     const coords = target.getBoundingClientRect();
-
     let left = coords.left;
-    console.log(left);
-    if (left < 0) left = 0;
+    if (left < 0) {
+      left = 0;
+    }
 
     let top = coords.top - container.offsetHeight - 5;
     if (top < 0) {
@@ -36,10 +41,8 @@ class Tooltip {
 
     container.style.left = left + 'px';
     container.style.top = top + 'px';
-
-    this.toolTipElem = container;
   }
-  hideToolTip (e) {
+  hideToolTip () {
     if (this.toolTipElem) {
       document.body.removeChild(this.toolTipElem);
       this.toolTipElem = null;
@@ -47,5 +50,6 @@ class Tooltip {
   }
 }
 
-const tooltip = new Tooltip(document.querySelectorAll('li'));
-
+const tooltips = Array.from(document.querySelectorAll('li')).forEach(el => {
+  return new Tooltip(el);
+});
