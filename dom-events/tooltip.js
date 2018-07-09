@@ -3,34 +3,31 @@ class Tooltip {
   constructor(element) {
     this.element = element;
     this.toolTipElem = null;
-    this.init();
+    this.setListeners();
   }
-  init () {
-    this.element.addEventListener('mouseenter', (e) => this.showToolTip(e));
-    this.element.addEventListener('mouseleave', (e) => this.hideToolTip(e));
+  setListeners () {
+    this.element.addEventListener('mouseenter', (e) => this.show(e));
+    this.element.addEventListener('mouseleave', (e) => this.hide(e));
   }
   createToolTipContainer () {
     const container = document.createElement('div');
     container.className = 'tooltip';
     return container;
   }
-  setCoords(tipElem){
-    const container = tipElem;
-    const coords = this.element.getBoundingClientRect();
-    let left = coords.left;
-    if (left < 0) {
-      left = 0;
-    }
+  setCoords(tipElemCoords){
+    const targetElementCoords = this.element.getBoundingClientRect();
+    let left = targetElementCoords.left < 0 ? 0 : targetElementCoords.left;
 
-    let top = coords.top - container.offsetHeight - 5;
+    let top = targetElementCoords.top - tipElemCoords.offsetHeight;
     if (top < 0) {
-      top = coords.top + container.offsetHeight - 15;
+      const shiftTipDown = 15;
+      top = targetElementCoords.top + tipElemCoords.offsetHeight - shiftTipDown;
     }
 
-    container.style.left = left + 'px';
-    container.style.top = top + 'px';
+    tipElemCoords.style.left = left + 'px';
+    tipElemCoords.style.top = top + 'px';
   }
-  showToolTip (e) {
+  show (e) {
     const target = e.target;
     const tooltip = target.getAttribute('data-tooltip');
     const tooltipElem = this.createToolTipContainer();
@@ -42,7 +39,7 @@ class Tooltip {
       this.toolTipElem = tooltipElem;
     }
   }
-  hideToolTip (e) {
+  hide (e) {
     if (this.toolTipElem) {
       document.body.removeChild(this.toolTipElem);
       this.toolTipElem = null;
