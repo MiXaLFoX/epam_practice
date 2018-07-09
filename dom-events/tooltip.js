@@ -15,7 +15,9 @@ class Tooltip {
     e = event || window.event;
     const target = e.target;
     const tooltip = target.getAttribute('data-tooltip');
+
     if (!tooltip) return;
+
     const container = document.createElement('div');
     container.className = 'tooltip';
     container.innerHTML = tooltip;
@@ -23,7 +25,8 @@ class Tooltip {
 
     const coords = target.getBoundingClientRect();
 
-    let left = coords.left + (target.offsetWidth - container.offsetWidth) / 2;
+    let left = coords.left;
+    console.log(left);
     if (left < 0) left = 0;
 
     let top = coords.top - container.offsetHeight - 5;
