@@ -10,10 +10,8 @@ class Tooltip {
     this.element.addEventListener('mouseleave', (e) => this.hideToolTip(e));
   }
   createToolTipContainer () {
-    const tooltip = this.element.getAttribute('data-tooltip');
     const container = document.createElement('div');
     container.className = 'tooltip';
-    container.innerHTML = tooltip;
     return container;
   }
   setCoords(tipElem){
@@ -32,17 +30,19 @@ class Tooltip {
     container.style.left = left + 'px';
     container.style.top = top + 'px';
   }
-  showToolTip () {
-    this.createToolTipContainer ();
-    const tooltip = this.createToolTipContainer();
-    document.body.appendChild(tooltip);
+  showToolTip (e) {
+    const target = e.target;
+    const tooltip = target.getAttribute('data-tooltip');
+    const tooltipElem = this.createToolTipContainer();
+    tooltipElem.innerHTML = tooltip;
 
-    if (tooltip) {
-      this.setCoords(tooltip);
-      this.toolTipElem = tooltip;
+    if (tooltip !== null) {
+      document.body.appendChild(tooltipElem);
+      this.setCoords(tooltipElem);
+      this.toolTipElem = tooltipElem;
     }
   }
-  hideToolTip () {
+  hideToolTip (e) {
     if (this.toolTipElem) {
       document.body.removeChild(this.toolTipElem);
       this.toolTipElem = null;
@@ -53,3 +53,4 @@ class Tooltip {
 const tooltips = Array.from(document.querySelectorAll('li')).forEach(el => {
   return new Tooltip(el);
 });
+const tooltip2 = new Tooltip(document.querySelector('p'));
