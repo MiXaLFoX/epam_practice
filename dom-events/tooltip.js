@@ -1,17 +1,21 @@
 
 class Tooltip {
   constructor(element) {
-    this.element = element;
+    this.element = Array.from(element);
     this.toolTipElem = null;
+    this.init();
   }
   init () {
-    this.element.addEventListener('mouseover', (e) => this.showToolTip());
-    this.element.addEventListener('mouseout', (e) => this.hideToolTip());
+    this.element.forEach(el => {
+      el.addEventListener('mouseenter', (e) => this.showToolTip());
+      el.addEventListener('mouseleave', (e) => this.hideToolTip());
+    })
   }
   showToolTip (e) {
     e = event || window.event;
     const target = e.target;
     const tooltip = target.getAttribute('data-tooltip');
+    if (!tooltip) return;
     const container = document.createElement('div');
     container.className = 'tooltip';
     container.innerHTML = tooltip;
@@ -33,9 +37,12 @@ class Tooltip {
     this.toolTipElem = container;
   }
   hideToolTip (e) {
-    document.body.removeChild(this.toolTipElem);
+    if (this.toolTipElem) {
+      document.body.removeChild(this.toolTipElem);
+      this.toolTipElem = null;
+    }
   }
 }
 
-const tooltip = new Tooltip(document.querySelector('ul'));
-tooltip.init();
+const tooltip = new Tooltip(document.querySelectorAll('li'));
+
