@@ -17,13 +17,17 @@ ul {
   background: #c2ffbb;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }
-.table{
+#table{
   margin: 10px auto;
   border-collapse: collapse;
 }
-.table td{
+#table td{
   width: 50px;
   text-align: center;
   padding: 10px;
-  border: 1px solid #3c1e00;
+  border: 1px solid #a74600;
+}
+.green-row{
+  background-color: lawngreen;
+  color: #0d3349;
 }
