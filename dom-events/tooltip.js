@@ -5,15 +5,18 @@ class Tooltip {
     this.toolTipElem = null;
     this.setListeners();
   }
+
   setListeners () {
-    this.element.addEventListener('mouseenter', (e) => this.show(e));
-    this.element.addEventListener('mouseleave', (e) => this.hide(e));
+    this.element.addEventListener('mouseenter', () => this.show());
+    this.element.addEventListener('mouseleave', () => this.hide());
   }
+
   createToolTipContainer () {
     const container = document.createElement('div');
     container.className = 'tooltip';
     return container;
   }
+
   setCoords(tipElemCoords){
     const targetElementCoords = this.element.getBoundingClientRect();
     let left = targetElementCoords.left < 0 ? 0 : targetElementCoords.left;
@@ -27,19 +30,19 @@ class Tooltip {
     tipElemCoords.style.left = left + 'px';
     tipElemCoords.style.top = top + 'px';
   }
-  show (e) {
-    const target = e.target;
-    const tooltip = target.getAttribute('data-tooltip');
-    const tooltipElem = this.createToolTipContainer();
-    tooltipElem.innerHTML = tooltip;
 
-    if (tooltip !== null) {
+  show () {
+    if (this.element.hasAttribute('data-tooltip')) {
+      const tooltipElem = this.createToolTipContainer();
+      const tooltip = this.element.getAttribute('data-tooltip');
+      tooltipElem.innerHTML = tooltip;
       document.body.appendChild(tooltipElem);
       this.setCoords(tooltipElem);
       this.toolTipElem = tooltipElem;
     }
   }
-  hide (e) {
+
+  hide () {
     if (this.toolTipElem) {
       document.body.removeChild(this.toolTipElem);
       this.toolTipElem = null;
